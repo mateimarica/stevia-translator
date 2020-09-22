@@ -1,0 +1,165 @@
+<!--Stevia can tell when you're looking at the source code. Tread lightly.-->
+<html>
+
+    <head>
+        <title>Stevia Translator</title>
+        <script src="./lib/pluralize-master/pluralize.js"></script>
+        <script src="./lib/mobile-detect.js"></script>
+        <script src="./vars.js"></script>
+        <script src="./script.js"></script>
+        <script>
+            var md = new MobileDetect(window.navigator.userAgent);
+
+            if (md.mobile() || md.tablet()) {
+                document.location.href = 'index-mobile.html';
+            }
+        </script>
+        <style>
+            #textarea {
+                resize: none;
+                background-color: #181a1b;
+                color:white;
+            }
+
+            #translateBtn {
+                margin-bottom: 0cm;
+                margin-top: 0.5cm;
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 1cm;
+                padding-left: 1cm;
+                background-color: #181a1b;
+                color:white;
+                font-size: 17px;
+                text-align:center;
+
+            }
+
+            #randomBtn {
+                margin-bottom: 0cm;
+                margin-left:1cm;
+                margin-top: 0.5cm;
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 1cm;
+                padding-left: 1cm;
+                background-color: #181a1b;
+                color:white;
+                font-size: 17px;
+                text-align:center;
+
+            }
+
+            #translatedText {
+                border-color:red;
+                border-width:thin;
+                border-style:solid;
+                width:60%;
+                height:30%;
+                
+            }
+
+            #typingSpeedLabel{
+                
+                position:absolute;
+                top:0cm;
+                right:0.3cm;
+            }
+
+            #realisticTypingBtn{
+                background-color: #181a1b;
+                color:white;
+                position:absolute;
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 0.5cm;
+                padding-left: 0.5cm;
+                font-size:16px;
+                top:1.2cm;
+                right:0.3cm;
+            }
+
+            #instantTypingBtn{
+                background-color: #181a1b;
+                color:white;
+                position:absolute;
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 0.65cm;
+                padding-left: 0.65cm;
+                font-size:16px;
+                top:2.5cm;
+                right:0.3cm;
+                
+            }
+
+            
+        </style>
+    </head>
+
+    <body style="background-color:black" onload="initialize()">
+
+        <h1
+        style="color:white">
+        Stevia Translator
+        </h1>
+        
+        <p
+        style="color:white"
+        >Enter some English text below to have it translated as to how Mr. Stevia would say it.</p>
+        
+
+        <section>
+            <textarea
+            id="textarea"
+            style="align-items: flex-end;"
+            cols="50"
+            rows="9"
+            
+            ></textarea>
+        </section>
+
+        <button id="translateBtn" onclick="translateClick()">Translate</button>
+        <button id="randomBtn" onclick="randomClick()">Random</button>
+
+        <p 
+        id="translatedText"
+        style="color:white"
+        ></p>
+
+        <p
+        style="color:gray"
+        id="versionLabel"
+        >v1.2.10</p>
+
+
+        <p
+        style="color:gray"
+        
+        id="infoText"
+        >Mr. Stevia is a fictional character who is based off of how some people type online. He has perfect spelling yet atrocious grammar.</p>
+		
+        <p
+        style="color:gray"
+        
+        id="allPersonsFictiousDisclaimer"
+        >This satirical translator and its contents are meant for entertainment purposes and any resemblance to actual persons, living or dead, is purely coincidental.</p>
+
+        <p
+        style="color:whitesmoke"
+        
+        id="typingSpeedLabel"
+        >Mr. Stevia's Typing Speed</p>
+
+        <button id="realisticTypingBtn" onclick="realisticTypeClick()">Realistic</button>
+        <button id="instantTypingBtn" onclick="instantTypeClick()">Instant</button>
+
+
+        
+        
+    </body>
+
+   
+    
+
+</html>

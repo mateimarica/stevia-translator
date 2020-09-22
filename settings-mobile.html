@@ -1,0 +1,115 @@
+
+<html>
+
+    <head>
+        <title>Stevia Translator settings</title>
+        
+        <script>
+            function exitBtnPress() {
+                document.location.href = 'index-mobile.html';
+            }
+
+            function initialize() {
+                if(localStorage["typingSpeed"] == null || localStorage["typingSpeed"] == "realistic") {
+                    document.getElementById("realisticTypingBtn").disabled = true;
+                    document.getElementById("realisticTypingBtn").style.color = "gray";
+                } else {
+                    document.getElementById("instantTypingBtn").disabled = true;
+                    document.getElementById("instantTypingBtn").style.color = "gray";
+                }
+            }
+
+            function realisticTypeClick() {
+                document.getElementById("realisticTypingBtn").disabled = true;
+                document.getElementById("realisticTypingBtn").style.color = "gray";
+                document.getElementById("instantTypingBtn").disabled = false;
+                document.getElementById("instantTypingBtn").style.color = "white";   
+                
+                localStorage["typingSpeed"] = "realistic";
+            }
+
+            function instantTypeClick() {
+                document.getElementById("realisticTypingBtn").disabled = false;
+                document.getElementById("realisticTypingBtn").style.color = "white";
+                document.getElementById("instantTypingBtn").disabled = true;
+                document.getElementById("instantTypingBtn").style.color = "gray";
+                localStorage["typingSpeed"] = "instant";
+            }
+
+        </script>
+        <meta name="viewport" content="width=device-width, user-scalable=no" />
+
+        <style>
+            #title {
+                font-size:30px;
+                
+            }
+
+
+            #exitBtn{
+                position:absolute;
+                top:6px;
+                right:6px;
+                background-color: #181a1b;
+                color:white;
+                font-size:30px;
+                
+                
+            }
+
+            #typingSpeedLabel{
+                font-size:20px
+               
+            }
+
+            #realisticTypingBtn{
+                background-color: #181a1b;
+                color:white;
+                
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 0.5cm;
+                padding-left: 0.5cm;
+                font-size:20px;
+            }
+
+            #instantTypingBtn{
+                background-color: #181a1b;
+                color:white;
+                padding-top: 0.2cm;
+                padding-bottom: 0.2cm;
+                padding-right: 0.65cm;
+                padding-left: 0.65cm;
+                font-size:20px;
+            }
+        </style>
+    </head>
+
+    <body style="background-color:black" onload="initialize()">
+
+        <h1
+        style="color:white";
+        id="title"
+        >
+        Settings
+        </h1>
+       
+
+        <p
+        style="color:white"
+        
+        id="typingSpeedLabel"
+        >Stevia's Typing Speed</p>
+
+        <button id="realisticTypingBtn" onclick="realisticTypeClick()">Realistic</button>
+        <button id="instantTypingBtn" onclick="instantTypeClick()">Instant</button>
+        
+
+        <button id="exitBtn" onclick="exitBtnPress()">X</button>
+        
+    </body>
+
+   
+    
+
+</html>
