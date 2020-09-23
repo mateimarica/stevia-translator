@@ -1,4 +1,6 @@
-[Click here to try this out](https://mateimarica.github.io/stevia-translator/)
+## [Click here to try this out](https://mateimarica.github.io/stevia-translator/)
+
+<br/>
 
 A satirical translator that pokes fun at the grammatical ability of some people online. Uses a ton of a string manipulation and regular expressions. 
 
