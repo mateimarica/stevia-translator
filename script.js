@@ -10,6 +10,7 @@ function initialize() {
         document.getElementById("instantTypingBtn").style.color = "gray";
     }
 }
+
 function realisticTypeClick() {
     document.getElementById("realisticTypingBtn").disabled = true;
     document.getElementById("realisticTypingBtn").style.color = "gray";
@@ -26,7 +27,6 @@ function instantTypeClick() {
     document.getElementById("instantTypingBtn").style.color = "gray";
     localStorage["typingSpeed"] = "instant";
 }
-
 
 function translateClick () {
     
@@ -83,7 +83,9 @@ function translateClick () {
     if(randomInt(1,3) > 1) {
         steviaText = steviaText.replace(new RegExp(" are ", "gi"), " are the ");
     }
+	
     steviaText = steviaText.replace(new RegExp(" goes", "gi"), " going");
+	
     if(randomInt(1, 2) == 1) {
         steviaText = steviaText.replace(new RegExp("don't am", "gi"), "not");
     } else {
@@ -94,6 +96,7 @@ function translateClick () {
     steviaText = steviaText.replace(new RegExp("my friend", "gi"), "my man");
     steviaText = steviaText.replace(new RegExp("my guy", "gi"), "my man");
     steviaText = steviaText.replace(new RegExp("dudes", "gi"), "boys");
+	
     if(randomInt(1,2) == 1) {
         steviaText = steviaText.replace(new RegExp("there", "gi"), "at there");
     } else {
@@ -134,7 +137,6 @@ function translateClick () {
     
  
     //steviaText = steviaText.replace(/\ws /gi, /\w/);
-
   
     let steviaTextArr = steviaText.split(" ");
     steviaText = "";
@@ -224,8 +226,6 @@ function translateClick () {
             for (let h = 0; h < steviaTextArr[i].length; h++) {
 
                 //if ends in -ing
-
-                
  
                 //If it finds a char that's not a letter
                 if(!isLetter(steviaTextArr[i].charAt(h))) {
@@ -276,9 +276,7 @@ function translateClick () {
                     
                     } else if(pluralize.isSingular(steviaTextArr[i].substring(0, h))) {
                         for(let y = 0; y < nouns.length; y++) {
-                       
-                
-
+							
                             if(randomInt(1,2) == 1) {
                                 if(steviaTextArr[i].substring(0, h).toUpperCase() == nouns[y].toUpperCase()) {
                                     steviaTextArr[i] = pluralize(steviaTextArr[i].substring(0, h)) + steviaTextArr[i].substring(h, steviaTextArr[i].length);
@@ -302,8 +300,6 @@ function translateClick () {
                                     }
                                 }
                             }
-                            
-                            
                         }
                     }
                     
@@ -372,12 +368,8 @@ function translateClick () {
                     
                     break;
                 }
-                
-
             }
-        }
-
-      
+        }      
     
         if(randomInt(1,2) == 1 && steviaTextArr[i] == "a") {
             steviaTextArr[i] = "";
@@ -429,15 +421,10 @@ function translateClick () {
 
     if(randomInt(1,3) > 1) {
         steviaText = steviaText.replace(new RegExp("are you ", "gi"), "do you ");
-    }
-
-
-
-    
+    }    
 
     steviaText = steviaText.replace(new RegExp("how are you", "gi"), "how it going");
-    steviaText = steviaText.replace(new RegExp("  ", "g"), " ");
-    
+    steviaText = steviaText.replace(new RegExp("  ", "g"), " ");    
  
     for(let i = 0; i < confirmations.length; i++) {
         
@@ -446,8 +433,6 @@ function translateClick () {
         } else {
             steviaText = steviaText.replace(new RegExp(" " + confirmations[i] + " ", "gi"), "Yea my man" + randomSymbolNumber("!", 1, 3));
         }
-        
-
     }
  
     //Add Yea my man!!
@@ -479,7 +464,6 @@ function translateClick () {
         }
     }
 
-
     //Grammar fixer 
     //removes extra spaces
     steviaText = steviaText.replace(new RegExp(/[ ]{2,}/, "g"), " ");
@@ -510,11 +494,7 @@ function translateClick () {
         steviaWrite(steviaText);
     } else {
         document.getElementById("translatedText").innerText = steviaText;
-    }
-
-
-    
-    
+    }    
 }
 
 
@@ -524,13 +504,10 @@ function randomSymbolNumber(symbol, floorNum, ceilingNum) {
     for(let i = 0; i < randomNumber; i++) {
         moreSymbols += symbol; 
     }
-
     return moreSymbols;
 }
 
-
 function randomInt(floorNum, ceilNum) {
-    
     return floorNum + Math.floor((Math.random() * (ceilNum - floorNum + 1)));
 }
 
@@ -538,7 +515,6 @@ function randomInt(floorNum, ceilNum) {
 async function steviaWrite(steviaTextIn) {
     document.getElementById("translateBtn").innerText = "Stevie is typing .\u00A0.\u00A0.";
     isStevieTyping = true;
-
     
     //stevie typing animation
     var interval = setInterval(function(){ 
@@ -563,9 +539,6 @@ async function steviaWrite(steviaTextIn) {
 
         
     }, 1000);
-
-    
-
    
     document.getElementById("randomBtn").style.visibility = "hidden";
 
@@ -575,13 +548,17 @@ async function steviaWrite(steviaTextIn) {
     let randomMarginL = document.getElementById("randomBtn").style.marginLeft;
     document.getElementById("randomBtn").style.marginLeft = "-20m";
 
-
     document.getElementById("translateBtn").disabled = true;
     let translateWidth;
+    let randomBtnWidth = document.getElementById("randomBtn").style.width;
 
     if(window.location.pathname.endsWith("index-mobile.html")) {
         translateWidth = document.getElementById("translateBtn").style.width;
         document.getElementById("translateBtn").style.width = "95%";
+
+        //really make the random button disappear so the translae button can take up the whole school
+        document.getElementById("randomBtn").style.width = "0cm";
+        document.getElementById("randomBtn").innerText = "";
     } else {
         translateWidth = document.getElementById("translateBtn").style.width;
         document.getElementById("translateBtn").style.width = "10cm";
@@ -592,7 +569,6 @@ async function steviaWrite(steviaTextIn) {
         //how fast stevie is typing
     
         await sleep(randomInt(50, 90));
-
 
         if(randomInt(1, 10) == 5) {
             let mistakes = randomInt(1,6);
@@ -621,31 +597,29 @@ async function steviaWrite(steviaTextIn) {
         }
         document.getElementById("translatedText").innerText = steviaTextIn.substring(0, index);
     
-
     }    
     
     document.getElementById("translateBtn").disabled = false;
     document.getElementById("translateBtn").innerText = "Translate";
     
     document.getElementById("randomBtn").style.visibility = "visible";
+    document.getElementById("randomBtn").innerText = "Random";
     document.getElementById("randomBtn").style.marginRight = randomMarginR;
     document.getElementById("randomBtn").style.marginLeft = randomMarginL;
+    document.getElementById("randomBtn").style.width = randomBtnWidth;
+
     document.getElementById("translateBtn").style.width = translateWidth;
     //stop stevie typing animation
     isStevieTyping = false;
 }
-function sleep(milli) {
- 
-    
+
+function sleep(milli) {    
     
     return new Promise(resolve => {
         setTimeout(() => {
           resolve();
         }, milli);
       });
-
-
-
 }
 
 function isLetter(ch){  
