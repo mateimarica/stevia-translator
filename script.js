@@ -2,6 +2,8 @@
 let isStevieTyping = false;
 
 function initialize() {
+	
+	
     if(localStorage["typingSpeed"] == null || localStorage["typingSpeed"] == "realistic") {
         document.getElementById("realisticTypingBtn").disabled = true;
         document.getElementById("realisticTypingBtn").style.color = "gray";
