@@ -1,4 +1,4 @@
-## [Click here to try this out](https://mateimarica.github.io/stevia-translator/)
+## [Click here to try this project out](https://mateimarica.github.io/stevia-translator/)
 
 <br/>
 
